@@ -1,0 +1,18 @@
+{% extends 'basic_app/base.html' %}
+{% load staticfiles %}
+{% block body_block %}
+
+<div class="jumbotron">
+    <h1>Micropost</h1>
+    {% if posted %}
+    <h1>Thank you for posting!</h1>
+    {% else %}
+    <form enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+        {{ micropost_form.as_p }}
+        <input type="submit" name="" value="Post">
+    </form>
+    {% endif %}
+</div>
+
+{% endblock %}

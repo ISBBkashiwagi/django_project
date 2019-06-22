@@ -1,0 +1,27 @@
+{% extends 'basic_app/base.html' %}
+{% load staticfiles %}
+{% block body_block %}
+
+<div class="jumbotron">
+    <h1>Your Posts</h1>
+    <table class="table">
+        <tr>
+            <th>UserName</th>
+            <th>Content</th>
+            <th>date</th>
+            <th></th>
+            <th></th>
+        </tr>
+        {% for post in microposts %}
+            <tr>
+                <td>{{ post.user }}</td>
+                <td>{{ post.content }}</td>
+                <td>{{ post.pub_date }}</td>
+                <td><a href="{% url 'basic_app:edit_post' post.pk %}">編集</a></td>
+                <td><a href="{% url 'basic_app:delete_post' post.pk %}">削除</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}
